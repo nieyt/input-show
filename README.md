@@ -1,7 +1,5 @@
 ## Plugin for resolve soft keyboard blocks the bottom input element
 
-### Getting Started
-
 ### Usage
 
 #### Syntax
