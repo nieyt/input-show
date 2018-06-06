@@ -41,15 +41,13 @@ var inputShow = function () {
     }, {
         key: 'onFocus',
         value: function onFocus() {
-            // if(this.isSpecVersion){
-            // ios11.0-11.3 对scrollTop及scrolIntoView解释有bug
-            // 直接执行会导致输入框滚到底部被遮挡
-            this.input.style.minHeight = window.innerHeight + this.input.offsetHeight + 88 + 'px';
-            // } else {
-            //     setTimeout(() => {
-            //         this.interval = setInterval(this.scrollToView.bind(this), this.intervals);
-            //     }, this.delay)
-            // }
+            var _this = this;
+
+            if (this.isSpecVersion) ; else {
+                setTimeout(function () {
+                    _this.interval = setInterval(_this.scrollToView.bind(_this), _this.intervals);
+                }, this.delay);
+            }
         }
     }, {
         key: 'scrollToView',
@@ -66,8 +64,7 @@ var inputShow = function () {
     }, {
         key: 'clearSrcoll',
         value: function clearSrcoll() {
-            // this.interval && clearInterval(this.interval);
-            this.input.style.minHeight = 'auto';
+            this.interval && clearInterval(this.interval);
         }
     }]);
 

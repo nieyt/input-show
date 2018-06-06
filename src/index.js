@@ -22,15 +22,14 @@ class inputShow{
         this.input.addEventListener('blur', this.clearSrcoll.bind(this));
     }
     onFocus() {
-        // if(this.isSpecVersion){
+        if(this.isSpecVersion){
             // ios11.0-11.3 对scrollTop及scrolIntoView解释有bug
             // 直接执行会导致输入框滚到底部被遮挡
-            this.input.style.minHeight = window.innerHeight + this.input.offsetHeight + 88 + 'px';
-        // } else {
-        //     setTimeout(() => {
-        //         this.interval = setInterval(this.scrollToView.bind(this), this.intervals);
-        //     }, this.delay)
-        // }
+        } else {
+            setTimeout(() => {
+                this.interval = setInterval(this.scrollToView.bind(this), this.intervals);
+            }, this.delay)
+        }
     }
     scrollToView() {
         this.input.scrollIntoView(true);
@@ -41,8 +40,7 @@ class inputShow{
         return +iosVsn[0] == 11 && +iosVsn[1] >= 0 && +iosVsn[1] < 3;
     }
     clearSrcoll() {
-        // this.interval && clearInterval(this.interval);
-        this.input.style.minHeight = 'auto';
+        this.interval && clearInterval(this.interval);
     }
 }
 
